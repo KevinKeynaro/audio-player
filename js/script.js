@@ -503,6 +503,37 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+// Fullscreen Toggle
+const fullscreenBtn = document.getElementById('fullscreenBtn');
+const fullscreenEnterIcon = document.getElementById('fullscreenEnterIcon');
+const fullscreenExitIcon = document.getElementById('fullscreenExitIcon');
+const fullscreenBtnText = document.getElementById('fullscreenBtnText');
+
+if (fullscreenBtn) {
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.warn("Fullscreen request error:", err);
+      });
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    const isFs = !!document.fullscreenElement;
+    if (fullscreenEnterIcon && fullscreenExitIcon) {
+      fullscreenEnterIcon.style.display = isFs ? 'none' : 'block';
+      fullscreenExitIcon.style.display = isFs ? 'block' : 'none';
+    }
+    if (fullscreenBtnText) {
+      fullscreenBtnText.textContent = isFs ? 'Keluar Layar Penuh' : 'Layar Penuh';
+    }
+  });
+}
+
 // Inisialisasi awal
 audio.loop = isLoop;
 audio.volume = parseFloat(volumeBar.value);
