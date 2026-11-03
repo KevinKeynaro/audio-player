@@ -31,6 +31,14 @@ const DEFAULT_TRACKS = [
     folder: "assets/audio",
     src: "assets/audio/suara-ritmis-monitor-detak-jantung.mpeg",
     duration: 0
+  },
+  {
+    id: "track-5",
+    title: "Jiwa Yang Bersedih",
+    filename: "jiwa-yang-bersedih.mpeg",
+    folder: "assets/audio",
+    src: "assets/audio/jiwa-yang-bersedih.mpeg",
+    duration: 0
   }
 ];
 
